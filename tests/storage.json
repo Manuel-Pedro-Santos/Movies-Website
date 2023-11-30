@@ -1,0 +1,22 @@
+{
+    "users": {
+        "c9850f4f-b725-481a-a687-e050f8d08720": {
+            "groups": [
+                {
+                    "id": "4e5e0cca-4351-4008-b78d-4ad9ce5605cf",
+                    "name": "recordações",
+                    "movie-array": [
+                        {
+                            "name": "Benfica",
+                            "id": "Campeão",
+                            "duration": 999999
+                        }
+                    ],
+                    "description": "as melhores recordações do benfica",
+                    "total-duration": 999999
+                }
+            ]
+        }
+    },
+    "logins": {}
+}

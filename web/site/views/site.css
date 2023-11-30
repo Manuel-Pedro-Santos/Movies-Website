@@ -1,0 +1,23 @@
+body{
+    background-color: #3c3f41;
+}
+
+p, h2, h1{
+    color: aliceblue;
+}
+
+
+
+img{
+    width: 300px;
+}
+.center {
+    text-align: center;
+    line-height: 150px;
+}
+
+h2 {
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle;
+}

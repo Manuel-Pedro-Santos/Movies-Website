@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "a508796f-e3fb-4144-a73e-2fef8f23e27e",
+		"name": "CMDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19531167"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.collectionVariables.set(\"BEARERTOKEN\",JSON.parse(responseBody))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/user",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Movies",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/search-movies?movie-name=\"Inception\"&limit=5",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"search-movies"
+					],
+					"query": [
+						{
+							"key": "movie-name",
+							"value": "\"Inception\"",
+							"description": "Name of the movie to be searched"
+						},
+						{
+							"key": "limit",
+							"value": "5",
+							"description": "Number of movies to return"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Popular Movies",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/popular-movies?limit=45",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"popular-movies"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "45"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Benfica\",\r\n    \"description\": \"É o maior\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/group",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Existing Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Benfica2\",\r\n  \"description\": \"Ainda melhor que o anterior (por muito improvável que seja)\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/edit-group?name=Benfica",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"edit-group"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Benfica"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All User Groups",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/list-groups",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"list-groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"tt1375666\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/add-movie?name=Benfica2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"add-movie"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Benfica2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Group Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/group-details?name=Benfica2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"group-details"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Benfica2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/delete-movie/:movie-id?name=Benfica2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"delete-movie",
+						":movie-id"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Benfica2"
+						}
+					],
+					"variable": [
+						{
+							"key": "movie-id",
+							"value": "tt1375666"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Existing Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARERTOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/group?name=Benfica2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"group"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Benfica2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BEARERTOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "BEARERTOKEN",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
